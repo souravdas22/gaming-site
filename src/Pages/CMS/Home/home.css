@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #5623d8;
+  --main-color: #6a79fa;
+  --body-bg-color: #1e1f22;
+  --third-color: #adb7be;
+}
+.hero-title-div{
+    text-transform: uppercase;
+    position: absolute;
+    top: 33%;
+    left: 10%;
+}
+.hero-title{
+    text-transform: uppercase;
+}
+.hero-description{
+    max-width: 42rem;
+    color: #ADB7BE;
+    text-transform: none;
+}
+.section-2,.section-3,.section-4,.section-7{
+background-color: var(--body-bg-color);
+height: 100vh;
+padding-top: 20px;
+}
+button,h1{
+   font-family: "Oxanium", sans-serif;
+}
+/* -----------section 4----------------- */
+.genre-categories{
+    color: #FFFFFF;
+    font-family: "Oxanium", sans-serif;
+    transition: 0.4s ease;
+}
+.genre-categories:hover{
+    background: #5623d8;
+    scale: 1.05;
+}
+.community-div{
+    /* background-image: url('../../../Carousel-images/community-bg.webp'); */
+    height: 100vh;
+    width: 100%;
+    /* background-size: cover; */
+    /* background-position: center; */
+    position: relative;
+}
+.card-head{
+    height: 100vh;
+}
+.community-inner-div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
