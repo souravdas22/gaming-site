@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/gaming-site/static/css/main.8879f53d.css",
+    "main.js": "/gaming-site/static/js/main.745d0e83.js",
+    "static/media/card-bg.webp": "/gaming-site/static/media/card-bg.0091b7fbe364d23eed7b.webp",
+    "static/media/Slide1.webp": "/gaming-site/static/media/Slide1.a44f86aa0d766516eb21.webp",
+    "static/media/Slide5.webp": "/gaming-site/static/media/Slide5.c01da7831b32b57445b3.webp",
+    "static/media/Slide4.webp": "/gaming-site/static/media/Slide4.19df236f73576e5efc5b.webp",
+    "static/media/Slide6.webp": "/gaming-site/static/media/Slide6.d69d363aea87bb2c1cdc.webp",
+    "static/media/Slide2.webp": "/gaming-site/static/media/Slide2.4a1a6474c6e36500e187.webp",
+    "static/media/Slide7.webp": "/gaming-site/static/media/Slide7.a56bc4e225579609b8fd.webp",
+    "static/media/Slide8.webp": "/gaming-site/static/media/Slide8.d7abcfb78da7e924514e.webp",
+    "static/media/community-bg.webp": "/gaming-site/static/media/community-bg.cf467ca3fdc51c925904.webp",
+    "static/media/avatar.webp": "/gaming-site/static/media/avatar.aa0e8cc6ef35a8c396a8.webp",
+    "static/media/Login-bg.webp": "/gaming-site/static/media/Login-bg.b0df01fbbb92866766a8.webp",
+    "static/media/Slide3.webp": "/gaming-site/static/media/Slide3.07e363c4e2156f9c9eae.webp",
+    "static/media/1.webp": "/gaming-site/static/media/1.f18e144c909d592262ee.webp",
+    "static/media/2.webp": "/gaming-site/static/media/2.7f8abd40bbd6a87cacaf.webp",
+    "static/media/3.webp": "/gaming-site/static/media/3.2e0564fc779b0e60d40f.webp",
+    "static/media/slick.svg": "/gaming-site/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/gaming-site/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/gaming-site/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/gaming-site/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/gaming-site/index.html",
+    "main.8879f53d.css.map": "/gaming-site/static/css/main.8879f53d.css.map",
+    "main.745d0e83.js.map": "/gaming-site/static/js/main.745d0e83.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8879f53d.css",
+    "static/js/main.745d0e83.js"
+  ]
+}
