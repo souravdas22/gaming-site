@@ -1,14 +1,12 @@
-import React from "react";
-import "../App.css";
 import { Link } from "react-router-dom";
 import { Fade, Zoom } from "react-reveal";
-export default function Navbar() {
-  function handleLoginbtn() {
-    localStorage.removeItem("token");
-  }
+export default function GlobalNavbar() {
+   function handleLoginbtn() {
+     localStorage.removeItem("token");
+   }
   return (
-    <div className="navbar">
-      <nav className=" mx-auto flex justify-between items-center h-[90px] ">
+    <div className="global-navbar">
+      <nav className=" mx-auto flex justify-between items-center h-[90px] bg-inherit max-w-[1380px] px-[20px]">
         <div className="logo">
           <img
             src="/images/logo.png"
@@ -43,7 +41,7 @@ export default function Navbar() {
           <Zoom duration={2000}>
             <Link to="/signin">
               <button
-                className="text-white border-[#5623d8] border-2 px-5 py-2 rounded-lg uppercase "
+                className="text-white border-[#5623d8] border-2 px-5 py-2 rounded-lg uppercase"
                 onClick={handleLoginbtn}
               >
                 {localStorage.getItem("token") ? "Logout" : "Login"}

@@ -17,27 +17,23 @@
 h2{
      font-family: "Oxanium", sans-serif;
      text-align: center;
-     margin: 10px 0;
+     margin: 8px 0;
 }
 .form-div form label{
     color: #FFFFFF;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.04rem;
 }
 .form-div form input{
    border:  2px solid rgba(255, 255, 255, .2);
    background: transparent;
-   padding: 12px;
+   padding: 5px 10px;
    color: #FFFFFF;
-   margin-bottom: 5px;
    border-radius: 8px;
    transition: border .3s ease-in-out;
 }
 .form-div form input:hover {
     border: 2px solid #6a79fa;
-}
-.form-div form input::placeholder{
-    color: dimgrey;
 }
 
 

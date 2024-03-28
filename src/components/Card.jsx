@@ -1,10 +1,9 @@
 import React from 'react'
 import "./card.css";
-// import img from "../Carousel-images/card/1.webp"
 export default function Card({image,text}) {
   return (
     <div>
-      <div className="w-[350px] card">
+      <div className="w-[350px] card cursor-pointer">
         <img src={image} alt="cardImg" />
         <div className="card-heading mx-8">
           <h3 className="card-title text-start  text-[#FFFFFF] font-bold text-2xl">

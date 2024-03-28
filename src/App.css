@@ -1,51 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
 :root {
   --primary-color: #5623d8;
   --main-color: #6a79fa;
   --body-bg-color: #1e1f22;
   --third-color: #adb7be;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
-section{
-  height: 100vh;
-}
-li{
-  color: #FFFFFF;
+
+li {
+  color: #ffffff;
   padding: 8px 0;
-   font-family: "Manrope", sans-serif;
-   cursor: pointer;
-   transition: 0.5s ease;
+  font-family: "Manrope", sans-serif;
+  cursor: pointer;
+  transition: 0.5s ease;
 }
-.nav-items li:hover{
+.nav-items li:hover {
   color: var(--main-color);
   scale: 1.12;
 }
-button,h1{
-   font-family: "Oxanium", sans-serif;
+button,
+h1 {
+  font-family: "Oxanium", sans-serif;
 }
-nav{
-   background-color: transparent;
-   padding:0  20px;
-     max-width: 1380px;
+nav {
+  background-color: transparent;
+  padding: 0 20px;
+  max-width: 1380px;
   margin: 0 auto;
 }
-.hero-section{
+.hero-section {
   position: relative;
 }
-.navbar{
+.navbar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
 }
-span{
-  text-transform: lowercase ;
+span {
+  text-transform: lowercase;
 }

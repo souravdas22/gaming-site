@@ -4,11 +4,11 @@ import Box from "@mui/material/Box";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import img1 from "../Carousel-images/Slide1.webp"
-import img2 from "../Carousel-images/Slide2.webp";
-import img3 from "../Carousel-images/Slide3.webp";
-import img4 from "../Carousel-images/Slide4.webp";
-import img5 from "../Carousel-images/Slide5.webp";
-import img6 from "../Carousel-images/Slide6.webp";
+import img2 from "../Carousel-images/Slide4.webp";
+import img3 from "../Carousel-images/Slide5.webp";
+import img4 from "../Carousel-images/Slide6.webp";
+import img5 from "../Carousel-images/Slide2.webp";
+import img6 from "../Carousel-images/Slide3.webp";
 import img7 from "../Carousel-images/Slide7.webp";
 import img8 from "../Carousel-images/Slide8.webp";
 

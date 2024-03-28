@@ -14,74 +14,34 @@ import image1 from "../../../Carousel-images/card/1.webp";
 import image2 from "../../../Carousel-images/card/2.webp";
 import image3 from "../../../Carousel-images/card/3.webp";
 import Footer from "../../Layout/Footer/Footer";
-import { TailSpin } from "react-loader-spinner";
-import { Bounce, Fade, Slide } from "react-reveal";
+import { Triangle } from "react-loader-spinner";
+import { Bounce, Fade, Slide, Zoom } from "react-reveal";
 import { JackInTheBox } from "react-awesome-reveal";
 import { Parallax } from "react-parallax";
-import community from '../../../Carousel-images/community-bg.webp';
+import community from "../../../Carousel-images/community-bg.webp";
 import cardBg from "../../../Carousel-images/card-bg.webp";
 import ReviewCard from "../../../components/Review";
-import  Accordion  from "../../../components/Accordian";
-
-
+import Accordion from "../../../components/Accordian";
+// import { Link } from "react-router-dom";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [pageSize, setPageSize] = useState(9);
-  const [searchTerm, setSearchTerm] = useState("");
-
   useEffect(() => {
-    fetch(
-      `https://api.rawg.io/api/games?key=7412cf4fa59c45bba640fd7518cb7973&page_size=${pageSize}&page=2`
-    )
-      .then((res) => res.json())
-      .then((data) => setProducts(data.results))
-      // .then((d)=>console.log(d))
-      .catch((error) => console.log(error));
-  }, [pageSize]);
-
-  useEffect(() => {
-    fetch(
-      "https://api.rawg.io/api/games?key=7412cf4fa59c45bba640fd7518cb7973&page=2"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        const genreNames = new Set();
-        data.results.forEach((result) => {
-          result.genres.forEach((genre) => {
-            genreNames.add(genre.name);
-          });
-        });
-        setGenres(Array.from(genreNames));
-      })
-      .catch((error) => console.log(error));
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, []);
 
-  useEffect(() => {
-    fetch(
-      `https://api.rawg.io/api/games?key=7412cf4fa59c45bba640fd7518cb7973&page_size=${pageSize}&search=${encodeURIComponent(
-        searchTerm
-      )}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.results); 
-      })
-      .catch((error) => console.log(error));
-  }, [searchTerm,pageSize]);
-
   const settings = {
-    className: "center",
-    centerMode: true,
     infinite: true,
-    centerPadding: "60px",
-     autoplay: true,
-    speed: 3000,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
     slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 3000,
+    cssEase: "linear",
+    pauseOnHover: false,
   };
   return (
     <>
@@ -95,13 +55,14 @@ export default function Home() {
               transform: "translate(-50%,-50%)",
             }}
           >
-            <TailSpin
+            <Triangle
               visible={true}
               height="80"
               width="80"
               color="#5623d8"
-              ariaLabel="tail-spin-loading"
-              radius="1"
+              ariaLabel="triangle-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
             />
           </div>
         </div>
@@ -188,7 +149,7 @@ export default function Home() {
                 </div>
               )}
             >
-              <Fade duration={3000}>
+              <Zoom duration={2000}>
                 <div className="card-head w-[1380px] mx-auto mt-10">
                   <div className="card-title-div">
                     {" "}
@@ -203,7 +164,7 @@ export default function Home() {
                     <Card image={image3} text={" Silent Wrath"} />
                   </div>
                 </div>
-              </Fade>
+              </Zoom>
             </Parallax>
           </section>
           <section className="section-4 ">
@@ -245,48 +206,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section
-            style={{ height: "auto" }}
-            className="section-5 bg-[#1e1f22]"
-          >
-            <h1 className="text-center text-5xl font-bold mb-8 text-white p-4 font-[Oxanium] uppercase">
-              Top <span className="text-[#5623d8] uppercase">Games</span>
-            </h1>
-            <div className="product-div flex justify-center w-[1380px] mx-auto gap-6">
-              <Bounce left duration={1500}>
-                <div className="left-part w-[50rem]  mt-[6rem]">
-                  <ul className="flex flex-col justify-center items-start gap-4">
-                    {genres.map((genre, index) => (
-                      <li
-                        className="genre-categories text-lg py-3 px-4 w-full "
-                        onClick={() => setSearchTerm(genre)}
-                        key={index}
-                      >
-                        {genre}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Bounce>
-              <div className="right-part flex justify-center items-center flex-wrap gap-6 py-6 ">
-                {products.map((product) => (
-                  <Fade left duration={1000}>
-                    <Card
-                      image={product.background_image}
-                      text={product.name}
-                      key={product.id}
-                    />
-                  </Fade>
-                ))}
-                <button
-                  className="text-white bg-[#5623d8] border-none border-2 px-5 py-2 my-5 rounded-lg uppercase font-bold"
-                  onClick={() => setPageSize(pageSize + 3)}
-                >
-                  See More
-                </button>
-              </div>
-            </div>
-          </section>
+
           {/* -----------accordian div--------------- */}
           <section className="h-[90vh]  bg-[#1e1f22] flex justify-center flex-col">
             <div className="w-[1380px] mx-auto questions-div">
@@ -301,11 +221,10 @@ export default function Home() {
                 <Fade right duration={2000}>
                   <Accordion />
                 </Fade>
-                
               </div>
             </div>
           </section>
-          <section className="section-6">
+          <section className="section-6 h-[70vh]">
             <Parallax
               strength={600}
               bgImage={community}

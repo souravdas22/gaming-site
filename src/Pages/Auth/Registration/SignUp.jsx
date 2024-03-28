@@ -1,69 +1,71 @@
-import React, { useState } from "react";
-import "./signin.css";
+import React from "react";
+import "./signup.css";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../Layout/Footer/Footer";
 import FilledButton from "../../../components/FilledButton";
 import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import axiosInstance from "../../../Helper/Helper";
-import { RotatingLines } from "react-loader-spinner";
-export default function SignIn() {
+export default function SignUp() {
   const [user, setUser] = React.useState({
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
   });
-    const [loading, setLoading] = useState(false);
+
   const [error, setError] = React.useState({});
   const validation = () => {
     let error = {};
+    if (!user.first_name) {
+      error.first_name = "First Name is required";
+    }
+    if (!user.last_name) {
+      error.last_name = "Last Name is required";
+    }
     if (!user.email) {
       error.email = "Email is required";
-    } else if (
-      !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        user.email
-      )
-    ) {
-      error.email = "Email should contain One capital , small and a special character";
     }
-      if (!user.password) {
-        error.password = "Password is required";
-      } else if (!/^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(user.password)) {
-        error.password =
-          "Minimum 6 and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character";
-      }
+    if (!user.password) {
+      error.password = "Password is required";
+    }
     return error;
   };
-  const [toHome, settoHome] = React.useState(false);
-  if (toHome === true) {
-    return <Navigate to="/" />;
+  const [toLogin, settoLogin] = React.useState(false);
+  if (toLogin === true) {
+    return <Navigate to="/signin" />;
   }
   const handleSubmit = async (e) => {
-    setLoading(false)
     e.preventDefault();
     setError(validation());
     const formdata = new FormData();
     formdata.append("email", user.email);
     formdata.append("password", user.password);
+    formdata.append("first_name", user.first_name);
+    formdata.append("last_name", user.last_name);
     try {
-      const response = await axiosInstance.post("user/signin", formdata, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      
-      setLoading(true);
+      const response = await axios.post(
+        "https://wtsacademy.dedicateddevelopers.us/api/user/signup",
+        formdata,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      console.log(response.data);
+      toast(response.data.message);
       if (response.status === 200) {
         setUser({
           ...user,
+          first_name: "",
+          last_name: "",
           email: "",
           password: "",
         });
-        toast(response.data.message);
         setTimeout(() => {
-          settoHome(true);
+          settoLogin(true);
         }, 2000);
       } else {
-        settoHome(false);
+        settoLogin(false);
       }
     } catch (error) {
       console.error(error);
@@ -74,6 +76,24 @@ export default function SignIn() {
     name = e.target.name;
     value = e.target.value;
 
+    if (name === "first@name") {
+      if (value.length === 0) {
+        setError({ ...error, first_name: "First Name is required" });
+        setUser({ ...user, first_name: value });
+      } else {
+        setError({ ...error, first_name: "" });
+        setUser({ ...user, first_name: value });
+      }
+    }
+    if (name === "last@name") {
+      if (value.length === 0) {
+        setError({ ...error, last_name: "Last Name is required" });
+        setUser({ ...user, last_name: value });
+      } else {
+        setError({ ...error, last_name: "" });
+        setUser({ ...user, last_name: value });
+      }
+    }
     if (name === "email") {
       if (value.length === 0) {
         setError({ ...error, email: "Email is required" });
@@ -98,16 +118,36 @@ export default function SignIn() {
       <section className="login">
         <div className="login-div w-[1380px] mx-auto">
           <ToastContainer />
-          <div className="form-div w-[450px] bg-[#1E1F22] py-[30px] px-[40px] rounded-xl">
+          <div className="form-div w-[450px] bg-[#1E1F22] py-[15px] px-[40px] rounded-xl">
             <form
               action=""
               className="flex justify-center flex-col gap-2"
               onSubmit={handleSubmit}
             >
               <h2 className="text-2xl font-bold text-white">
-                Sign in to your account
+                Sign up to your account
               </h2>
-              <label htmlFor="email">Username or Email</label>
+              <label htmlFor="first@name">First Name</label>
+              <input
+                name="first@name"
+                label="First Name"
+                value={user.first_name}
+                onChange={(e) => userData(e)}
+                type="text"
+                id="first@name"
+              />
+              <span style={{ color: "red" }}>{error.first_name}</span>
+              <label htmlFor="last@name">Last Name</label>
+              <input
+                name="last@name"
+                label="Last Name"
+                value={user.last_name}
+                onChange={(e) => userData(e)}
+                type="text"
+                id="last@name"
+              />
+              <span style={{ color: "red" }}>{error.last_name}</span>
+              <label htmlFor="email">Email</label>
               <input
                 name="email"
                 label="Email"
@@ -132,33 +172,17 @@ export default function SignIn() {
                   <input type="checkbox" />
                   <label htmlFor=""> Remember Me</label>
                 </div>
-                <span className="text-[#6a79fa] font-[manrope] capitalize font-semibold text-base">
+                <span className="text-[#6a79fa] font-[manrope] capitalize font-semibold text-base cursor-pointer">
                   Forgot Password?
                 </span>
               </div>
-              <p className="text-white text-end text-base pt-2">
-                Dont have an account?{" "}
-                <Link className="text-[#6a79fa] font-[manrope]" to={"/signup"}>
-                  Sign Up
+              <p className="text-white text-end text-base ">
+                Already have an account?{" "}
+                <Link className="text-[#6a79fa] font-[manrope]" to={"/signin"}>
+                  Sign In
                 </Link>
               </p>
-              {loading ? (
-                <div className="flex justify-center">
-                  <RotatingLines
-                    visible={true}
-                    height="16"
-                    width="16"
-                    color="#6a79fa"
-                    strokeWidth="5"
-                    animationDuration="0.75"
-                    ariaLabel="rotating-lines-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                  />
-                </div>
-              ) : (
-                <FilledButton text={"Sign In"} type="submit" />
-              )}
+              <FilledButton text={"Sign Up"} type="submit" />
             </form>
           </div>
           <Navbar />
